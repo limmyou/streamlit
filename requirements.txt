@@ -1,8 +1,10 @@
-streamlit
+streamlit==1.31.0
 requests
 pymysql
 pytz
 pandas
 Pillow
-st-aggrid
+streamlit-aggrid
 openpyxl
+rich==13.6.0
+markdown-it-py==3.0.0

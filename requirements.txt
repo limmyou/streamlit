@@ -1,0 +1,8 @@
+streamlit
+requests
+pymysql
+pytz
+pandas
+Pillow
+st-aggrid
+openpyxl

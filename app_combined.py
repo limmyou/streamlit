@@ -19,9 +19,9 @@ import zipfile
 from st_aggrid import AgGrid, GridOptionsBuilder
 
 # FastAPI URL 수정
-FASTAPI_URL_DETECT = "http://3.38.35.102:8000/detect"  # YOLO 모델을 사용하는 /detect 엔드포인트
-FASTAPI_URL_SEGMENT = "http://3.38.35.102:8000/segment"   # DeepLabV3+ 면적 계산
-FASTAPI_STATUS_URL = "http://3.38.35.102:8000/status"
+FASTAPI_URL_DETECT = "https://fastapi-production-c437.up.railway.app/detect"
+FASTAPI_URL_SEGMENT = "https://fastapi-production-c437.up.railway.app/segment"
+FASTAPI_STATUS_URL = "https://fastapi-production-c437.up.railway.app/status"
 
 # MariaDB 연결 설정
 DB_CONFIG = {

@@ -35,7 +35,7 @@ def get_connection():
         password=st.secrets["MYSQLPASSWORD"],
         database=st.secrets["MYSQLDATABASE"],
         port=int(st.secrets["MYSQLPORT"]),
-        cursorclass=pymysql.cursors.DictCursor,
+        ssl={"disabled": True},
         charset="utf8mb4",
         autocommit=True
     )

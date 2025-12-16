@@ -33,7 +33,8 @@ def get_connection():
         port=int(st.secrets["MYSQLPORT"]),
         ssl={"disabled": True},
         charset="utf8mb4",
-        autocommit=True
+        autocommit=True,
+        cursorclass=pymysql.cursors.DictCursor
     )
 
 def save_user_log(name, timestamp):

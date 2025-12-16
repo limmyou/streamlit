@@ -18,10 +18,6 @@ from PIL import Image
 import zipfile
 from st_aggrid import AgGrid, GridOptionsBuilder
 
-st.write("HOST:", st.secrets.get("MYSQLHOST"))
-st.write("USER:", st.secrets.get("MYSQLUSER"))
-st.write("PWD:", st.secrets.get("MYSQLPASSWORD"))
-
 # FastAPI URL 수정
 FASTAPI_URL_DETECT = "https://fastapi-production-c437.up.railway.app/detect"
 FASTAPI_URL_SEGMENT = "https://fastapi-production-c437.up.railway.app/segment"

@@ -24,19 +24,21 @@ FASTAPI_URL_SEGMENT = "https://fastapi-production-c437.up.railway.app/segment"
 FASTAPI_STATUS_URL = "https://fastapi-production-c437.up.railway.app/status"
 
 # MariaDB 연결 설정
-DB_CONFIG = {
-    "host": "3.38.35.102",
-    "port": 3306,
-    "user": "kang",
-    "password": "0624",
-    "database": "test_db",
-    "charset": "utf8mb4",
-    "autocommit": True
-}
+def get_connection():
+    return pymysql.connect(
+        host=st.secrets["MYSQLHOST"],
+        user=st.secrets["MYSQLUSER"],
+        password=st.secrets["MYSQLPASSWORD"],
+        database=st.secrets["MYSQLDATABASE"],
+        port=int(st.secrets["MYSQLPORT"]),
+        cursorclass=pymysql.cursors.DictCursor,
+        charset="utf8mb4",
+        autocommit=True
+    )
 
 def save_user_log(name, timestamp):
     try:
-        conn = pymysql.connect(**DB_CONFIG)
+        conn = get_connection()
         cursor = conn.cursor()
         query = "INSERT INTO user_log (name, access_time) VALUES (%s, %s)"
         cursor.execute(query, (name, timestamp))
@@ -47,7 +49,7 @@ def save_user_log(name, timestamp):
 
 def insert_to_image_data(name, filename, info_value, filesize, inference_time, timestamp, mode):
     try:
-        conn = pymysql.connect(**DB_CONFIG)
+        conn = get_connection()
         cursor = conn.cursor()
 
         if mode == "detect":  # YOLO
@@ -193,7 +195,7 @@ with tab2:
     query_name = st.text_input("사용자 이름", key="query_name")
 
     try:
-        conn = pymysql.connect(**DB_CONFIG)
+        conn = get_connection()
 
         if db_choice == "객체 탐지 (YOLO)":
             base_query = """

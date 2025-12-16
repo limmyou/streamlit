@@ -8,3 +8,4 @@ streamlit-aggrid
 openpyxl
 rich==13.6.0
 markdown-it-py==3.0.0
+cryptography

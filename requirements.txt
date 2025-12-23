@@ -1,6 +1,6 @@
 streamlit==1.31.0
 requests
-psycopg2
+psycopg2-binary
 pymysql
 pytz
 pandas

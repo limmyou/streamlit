@@ -10,6 +10,7 @@ Original file is located at
 import streamlit as st
 import requests
 import psycopg2
+import psycopg2.extras
 import pytz
 from datetime import datetime
 import pandas as pd

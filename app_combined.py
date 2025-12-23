@@ -9,7 +9,7 @@ Original file is located at
 
 import streamlit as st
 import requests
-import pymysql
+import psycopg2
 import pytz
 from datetime import datetime
 import pandas as pd
@@ -23,18 +23,15 @@ FASTAPI_URL_DETECT = "https://fastapi-production-c437.up.railway.app/detect"
 FASTAPI_URL_SEGMENT = "https://fastapi-production-c437.up.railway.app/segment"
 FASTAPI_STATUS_URL = "https://fastapi-production-c437.up.railway.app/status"
 
-# MariaDB 연결 설정
+# PostgreSQL 연결 설정
 def get_connection():
-    return pymysql.connect(
-        host=st.secrets["MYSQLHOST"],
-        user=st.secrets["MYSQLUSER"],
-        password=st.secrets["MYSQLPASSWORD"],
-        database=st.secrets["MYSQLDATABASE"],
-        port=int(st.secrets["MYSQLPORT"]),
-        ssl={"disabled": True},
-        charset="utf8mb4",
-        autocommit=True,
-        cursorclass=pymysql.cursors.DictCursor
+    return psycopg2.connect(
+        host=st.secrets["POSTGRES_HOST"],
+        user=st.secrets["POSTGRES_USER"],
+        password=st.secrets["POSTGRES_PASSWORD"],
+        database=st.secrets["POSTGRES_DATABASE"],
+        port=int(st.secrets["POSTGRES_PORT"]),
+        cursor_factory=psycopg2.extras.DictCursor
     )
 
 def save_user_log(name, timestamp):
